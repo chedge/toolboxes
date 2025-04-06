@@ -17,4 +17,4 @@ apk update && apk upgrade
 grep -v '^#' ./cli.packages | xargs apk add
 
 # make the trigger for setting up linuxbrew more sensitive
-sed 's/test ! -d \/home\/linuxbrew\/\.linuxbrew/test ! -d \/home\/linuxbrew\/\.linuxbrew\/bin/g' /etc/profile.d/00-bluefin-cli-brew-firstrun.sh
+sed -i 's/test ! -d \/home\/linuxbrew\/\.linuxbrew/test ! -d \/home\/linuxbrew\/\.linuxbrew\/bin/g' /etc/profile.d/00-bluefin-cli-brew-firstrun.sh
