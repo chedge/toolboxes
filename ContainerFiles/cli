@@ -1,0 +1,16 @@
+FROM ghcr.io/ublue-os/bluefin-cli:latest
+
+LABEL com.github.containers.toolbox="true" \
+      usage="This image is meant to be used with the toolbox or distrobox command" \
+      summary="A cloud-native terminal experience" \
+      maintainer="hedges.colin@gmail.com"
+
+# Copy the setup scripts and package list
+COPY ../scripts/cli.sh /
+COPY ../scripts/distrobox-shims.sh /
+COPY ../packages/cli.packages /
+
+# Run the setup scripts
+RUN chmod +x cli.sh distrobox-shims.sh && /cli.sh
+RUN rm /cli.sh /distrobox-shims.sh /cli.packages
+COPY ../scripts/01-bluefin-brew-fix.sh /etc/profile.d/

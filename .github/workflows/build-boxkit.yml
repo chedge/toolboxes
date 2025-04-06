@@ -27,9 +27,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        containerfile: 
-          - boxkit
-       #- fedora-example # Included as an example to demonstrate multi-image builds, uncomment to build the fedora-example container too
+        containerfile:
+          - cli
     steps:
       # Clone code to runner
       - name: Checkout
