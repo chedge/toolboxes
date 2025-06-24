@@ -12,6 +12,7 @@ git
 just
 jq
 make
+mediainfo
 #mpv
 nano
 nmap
