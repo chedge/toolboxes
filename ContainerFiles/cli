@@ -13,5 +13,4 @@ COPY ../packages/cli.packages /
 # Run the setup scripts
 RUN chmod +x cli.sh distrobox-shims.sh && /cli.sh
 RUN rm /cli.sh /distrobox-shims.sh /cli.packages
-RUN rm /etc/profile.d/modern-unix.sh
-COPY ../scripts/01-bluefin-brew-fix.sh ../files/etc/profile.d/modern-unix.sh /etc/profile.d/
+COPY ../scripts/01-bluefin-brew-fix.sh /etc/profile.d/

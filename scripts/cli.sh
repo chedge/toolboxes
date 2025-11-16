@@ -18,3 +18,6 @@ grep -v '^#' ./cli.packages | xargs apk add
 
 # make the trigger for setting up linuxbrew more sensitive
 sed -i 's/test ! -d \/home\/linuxbrew\/\.linuxbrew/test ! -d \/home\/linuxbrew\/\.linuxbrew\/bin/g' /etc/profile.d/00-bluefin-cli-brew-firstrun.sh
+
+# remove the find=fd alias, as fd syntax is incompatible with find
+sed -i '/fd/d' /etc/profile.d/modern-unix.sh
