@@ -28,6 +28,7 @@ jobs:
       fail-fast: false
       matrix:
         containerfile:
+          - wolfi
           - cli
     steps:
       # Clone code to runner
