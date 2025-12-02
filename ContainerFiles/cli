@@ -1,4 +1,4 @@
-FROM ghcr.io/ublue-os/bluefin-cli:latest
+FROM ghcr.io/chedge/wolfi:latest
 
 LABEL com.github.containers.toolbox="true" \
       usage="This image is meant to be used with the toolbox or distrobox command" \
@@ -9,8 +9,18 @@ LABEL com.github.containers.toolbox="true" \
 COPY ../scripts/cli.sh /
 COPY ../scripts/distrobox-shims.sh /
 COPY ../packages/cli.packages /
+COPY ../files /
 
 # Run the setup scripts
 RUN chmod +x cli.sh distrobox-shims.sh && /cli.sh
 RUN rm /cli.sh /distrobox-shims.sh /cli.packages
 COPY ../scripts/01-bluefin-brew-fix.sh /etc/profile.d/
+
+# Configure Locales and get bash-prexec
+RUN curl https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o /tmp/bash-prexec \
+    && mkdir -p /usr/share/ \
+    && cp /tmp/bash-prexec /usr/share/bash-prexec \
+    && printf 'LANG=en_US.utf8\nexport LANG\n' > /etc/profile.d/locale.sh \
+    && printf 'LANG=en_US.utf8\nexport LANG\n' >> /etc/zsh/zshrc \
+    && printf 'LANG="en_US.UTF-8"' > /etc/locale.conf \
+    && rm -rf /tmp/*
