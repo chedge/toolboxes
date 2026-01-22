@@ -8,3 +8,5 @@ ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/buildah
 ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/distrobox
 ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/rpm-ostree
 ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/transactional-update
+ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/qemu
+ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/bcvk
