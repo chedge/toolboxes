@@ -13,3 +13,6 @@ chmod 0775 /var/mail
 apk update && apk upgrade
 grep -v '^#' ./cli.packages | xargs apk add
 mv /home/linuxbrew /home/homebrew
+
+# install bcvk via cargo
+cargo install --no-track --root /usr/local/ --locked --git https://github.com/bootc-dev/bcvk bcvk
